@@ -6,123 +6,119 @@
 <title>Login</title>
 
 <style>
-body {
+* {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    box-sizing: border-box;
     font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(-45deg, #667eea, #764ba2, #6a11cb, #2575fc);
-    background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
 }
 
-/* Background animation */
-@keyframes gradientBG {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-}
-
-/* Glass card */
-.login-box {
-    backdrop-filter: blur(15px);
-    background: rgba(255,255,255,0.15);
+/* Card */
+.login-container {
+    background: white;
     padding: 40px;
-    border-radius: 20px;
     width: 320px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    color: white;
-    animation: fadeIn 1s ease;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    animation: slideUp 0.8s ease;
 }
 
 /* Title */
-h1 {
+h2 {
     text-align: center;
     margin-bottom: 25px;
+    color: #333;
 }
 
-/* Floating input container */
-.input-box {
-    position: relative;
-    margin: 20px 0;
+/* Input fields */
+.input-group {
+    margin-bottom: 20px;
 }
 
-.input-box input {
+.input-group input {
     width: 100%;
     padding: 12px;
-    border: none;
-    border-radius: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.input-group input:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 8px rgba(79,172,254,0.4);
     outline: none;
-    background: rgba(255,255,255,0.2);
-    color: white;
-}
-
-/* Placeholder style */
-.input-box input::placeholder {
-    color: rgba(255,255,255,0.7);
-}
-
-/* Glow effect */
-.input-box input:focus {
-    box-shadow: 0 0 10px rgba(255,255,255,0.6);
 }
 
 /* Button */
-.btn {
+button {
     width: 100%;
     padding: 12px;
     border: none;
-    border-radius: 10px;
-    background: white;
-    color: #764ba2;
-    font-weight: bold;
+    border-radius: 8px;
+    background: #4facfe;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
 }
 
-.btn:hover {
-    transform: scale(1.05);
-    background: #f1f1f1;
+button:hover {
+    background: #00c6ff;
+    transform: translateY(-2px);
 }
 
 /* Message */
 .message {
     text-align: center;
-    color: #00ffcc;
+    color: green;
     margin-bottom: 10px;
 }
 
 /* Animation */
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(40px);}
-    to {opacity: 1; transform: translateY(0);}
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="login-box">
+<div class="login-container">
+
     <div class="message">
         {{ message | default('') }}
     </div>
 
-    <h1>Welcome</h1>
+    <h2>Login</h2>
 
     <form method="post" action="/login">
-        <div class="input-box">
+        <div class="input-group">
             <input type="text" name="username" placeholder="Username" required>
         </div>
 
-        <div class="input-box">
+        <div class="input-group">
             <input type="password" name="password" placeholder="Password" required>
         </div>
 
-        <button class="btn" type="submit">Login</button>
+        <button type="submit">Login</button>
     </form>
+
 </div>
 
 </body>
