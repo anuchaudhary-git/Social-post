@@ -1,17 +1,99 @@
+ <!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 300px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 8px rgba(102,126,234,0.5);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
+            transform: scale(1.05);
+        }
+
+        .message {
+            color: green;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <span style="color: green;">
-    {{ message | default('') }}
-    </span>
+
+<div class="login-box">
+    <div class="message">
+        {{ message | default('') }}
+    </div>
+
     <h1>Login</h1>
+
     <form method="post" action="/login">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="Login">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <button class="btn" type="submit">Login</button>
     </form>
-   
+</div>
+
+</body>
+</html>
